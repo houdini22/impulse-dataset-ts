@@ -10,7 +10,7 @@
 
 ## How to use?
 
-```
+```javascript
 const {
     DatasetBuilder: { DatasetBuilder },
     DatasetModifier: { MinMaxScalingDatabaseModifier, MissingDataScalingDatabaseModifier },
@@ -27,12 +27,12 @@ DatasetBuilder.fromSource(
 });
 ```
 
-```
+```javascript
 const {
     DatasetBuilder: { DatasetBuilder },
     DatasetBuilderSource: { DatasetBuilderSourceCSV },
     DatasetModifier: { CategoryDatasetModifier }
-} = require("../dist/impulse-dataset-ts");
+} = require("impulse-dataset-ts");
 
 const path = require("path");
 
