@@ -44,3 +44,37 @@ DatasetBuilder.fromSource(
     console.log(inputDataset.data);
 });
 ```
+
+## Documentation
+
+### Supported dataset modifiers:
+```
+MinMaxScalingDatasetModifier
+MissingDataScalingDatasetModifier
+ShuffleDatasetModifier
+CategoryDatasetModifier
+```
+There are no errors using above.
+
+## Examples
+
+### Exports
+
+```javascript
+const {
+    Dataset: {
+        Dataset
+    },
+    DatasetBuilder: {
+        DatasetBuilder
+    },
+    DatasetBuilderSource: {
+        DatasetBuilderSourceCSV
+    },
+    DatasetModifier: {
+        MinMaxScalingDatasetModifier,
+        MissingDataScalingDatasetModifier,
+        ShuffleDatasetModifier,
+    }
+} = require("impulse-dataset-ts");
+```
