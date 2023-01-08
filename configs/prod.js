@@ -12,12 +12,12 @@ module.exports = {
   resolve: {
     extensions: [".ts"],
     alias: {
-      "impulseTsToolkit": path.resolve(__dirname, '../build/Debug/impulseTsToolkit.node')
-    }
+      impulseTsToolkit: path.resolve(__dirname, "../build/Debug/impulseTsToolkit.node"),
+    },
   },
   externals: {
-    'gpu.js': 'gpu.js',
-    'csvtojson': 'csvtojson'
+    "gpu.js": "gpu.js",
+    csvtojson: "csvtojson",
   },
   module: {
     rules: [
@@ -29,8 +29,8 @@ module.exports = {
       {
         test: /\.node$/,
         loader: "node-loader",
-      }
+      },
     ],
   },
-  target: "node"
+  target: "node",
 };

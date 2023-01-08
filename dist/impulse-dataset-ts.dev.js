@@ -619,11 +619,17 @@ var Dataset = /*#__PURE__*/function () {
       for (var row = 0; row < exampleSize; row += 1) {
         data[row] = new Array(numberOfExamples);
         for (var col = 0; col < numberOfExamples; col += 1) {
-          if (typeof arr[row][col] === "string") {
+          if (!arr[col]) {
+            continue;
+          }
+          // @ts-ignore
+          if (typeof arr[col][row] === "string" && /^[-0-9.e]+$/.test(arr[col][row])) {
+            data[row][col] = Number(arr[col][row]);
+          } else if (typeof arr[col][row] === "string") {
             // @ts-ignore
-            data[row][col] = arr[row][col].length ? arr[row][col] : NaN;
-          } else if (typeof arr[row][col] === "number") {
-            data[row][col] = arr[row][col];
+            data[row][col] = arr[col][row].length ? arr[col][row] : NaN;
+          } else if (typeof arr[col][row] === "number") {
+            data[row][col] = arr[col][row];
           } else {
             data[row][col] = NaN;
           }
@@ -658,15 +664,16 @@ var Dataset = /*#__PURE__*/function () {
     value: function insertColumnAfter(column) {
       var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
       var oldData = this.data.copy();
-      this.data.resize(this.data.rows, this.data.cols + size);
+      this.exampleSize = this.data.rows + size;
+      this.data.resize(this.data.rows + size, this.data.cols);
       for (var row = 0; row < this.data.rows; row += 1) {
         for (var col = 0; col < this.data.cols; col += 1) {
-          if (col <= column) {
+          if (row <= column) {
             this.data.data[row][col] = oldData.data[row][col];
-          } else if (col > column && col < column + size) {
+          } else if (row > column && row <= column + size) {
             this.data.data[row][col] = undefined;
-          } else if (col >= column + size - 1) {
-            this.data.data[row][col] = oldData.data[row][col - size];
+          } else if (row > column + size) {
+            this.data.data[row][col] = oldData.data[row - size][col];
           }
         }
       }
@@ -824,7 +831,7 @@ var CategoryDatasetModifier = /*#__PURE__*/function (_AbstractDatasetModif) {
       var _this2 = this;
       var size = 0;
       var _dataset = dataset;
-      this.columns.forEach(function (column) {
+      this.columns.sort().forEach(function (column) {
         var _this2$applyForColumn = _this2.applyForColumn(_dataset, column + size),
           _this2$applyForColumn2 = _slicedToArray(_this2$applyForColumn, 2),
           dataset = _this2$applyForColumn2[0],
@@ -838,29 +845,27 @@ var CategoryDatasetModifier = /*#__PURE__*/function (_AbstractDatasetModif) {
   }, {
     key: "applyForColumn",
     value: function applyForColumn(dataset, column) {
-      var example = dataset.data.col(column);
+      var example = dataset.data.row(column);
       var values = [];
       for (var row = 0; row < example.rows; row += 1) {
         values.push(example.value(row, 0));
       }
-      console.log(values);
       values = values.filter(function (value, index, self) {
         return self.indexOf(value) === index;
       });
       dataset.insertColumnAfter(column, values.length - 1);
-      for (var _row = 0; _row < dataset.data.rows; _row += 1) {
-        var oldValue = dataset.data.data[_row][column];
+      for (var col = 0; col < dataset.data.cols; col += 1) {
+        var oldValue = dataset.data.data[column][col];
+        console.log(oldValue);
         var index = 0;
-        for (var col = 0; col < column + values.length; col += 1) {
-          if (col >= column && col < column + values.length) {
+        for (var _row = 0; _row < dataset.data.rows; _row += 1) {
+          if (_row >= column && _row < column + values.length) {
             if (index === values.indexOf(oldValue)) {
               dataset.data.data[_row][col] = 1;
             } else {
               dataset.data.data[_row][col] = 0;
             }
             index += 1;
-          } else {
-            // dataset.data.data[row][col] = dataset.data.data[row][col];
           }
         }
       }
@@ -983,7 +988,7 @@ var MissingDataScalingDatasetModifier = /*#__PURE__*/function (_AbstractDatasetM
       for (var exampleIndex = 0; exampleIndex < dataset.getNumberOfExamples(); exampleIndex += 1) {
         var example = dataset.exampleAt(exampleIndex);
         for (var row = 0; row < dataset.getExampleSize(); row += 1) {
-          if (isNaN(example.data[row][0]) || typeof example.data[row][0] === "undefined") {
+          if (isNaN(example.data[row][0]) || typeof example.data[row][0] !== "number") {
             rowsToFill.push({
               row: row,
               col: example
@@ -1284,7 +1289,7 @@ var DatasetBuilder = /*#__PURE__*/function () {
           var matrix = source.parse();
           var numberOfExamples = matrix.rows;
           var exampleSize = matrix.cols;
-          var dataset = new _Dataset__WEBPACK_IMPORTED_MODULE_0__.Dataset(exampleSize, numberOfExamples, params !== null && params !== void 0 && params.transpose ? matrix.transpose().data : matrix.data);
+          var dataset = new _Dataset__WEBPACK_IMPORTED_MODULE_0__.Dataset(exampleSize, numberOfExamples, matrix.data);
           resolve(dataset);
         });
       });
@@ -1376,7 +1381,10 @@ var DatasetBuilderSourceCSV = /*#__PURE__*/function (_AbstractDatasetBuild) {
 
       var numberOfExamples = this.data.length;
       var exampleSize = this.data[0].length;
-      return new _Math_Matrix__WEBPACK_IMPORTED_MODULE_1__.Matrix(numberOfExamples, exampleSize, this.data).transpose();
+      if (typeof numberOfExamples !== "undefined" && typeof exampleSize !== "undefined") {
+        return new _Math_Matrix__WEBPACK_IMPORTED_MODULE_1__.Matrix(numberOfExamples, exampleSize, this.data);
+      }
+      return new _Math_Matrix__WEBPACK_IMPORTED_MODULE_1__.Matrix(0, 0, [[]]);
     }
     /*
     protected parseLine(line: string, exampleIndexCol: number): void {

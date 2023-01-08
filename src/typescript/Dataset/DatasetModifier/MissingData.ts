@@ -13,7 +13,7 @@ export class MissingDataScalingDatasetModifier extends AbstractDatasetModifier {
     for (let exampleIndex = 0; exampleIndex < dataset.getNumberOfExamples(); exampleIndex += 1) {
       const example = dataset.exampleAt(exampleIndex);
       for (let row = 0; row < dataset.getExampleSize(); row += 1) {
-        if (isNaN(example.data[row][0]) || typeof example.data[row][0] === "undefined") {
+        if (isNaN(example.data[row][0]) || typeof example.data[row][0] !== "number") {
           rowsToFill.push({
             row,
             col: example,

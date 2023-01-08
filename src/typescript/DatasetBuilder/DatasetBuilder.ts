@@ -16,11 +16,7 @@ export class DatasetBuilder {
         const numberOfExamples = matrix.rows;
         const exampleSize = matrix.cols;
 
-        const dataset = new Dataset(
-          exampleSize,
-          numberOfExamples,
-          params?.transpose ? matrix.transpose().data : matrix.data
-        );
+        const dataset = new Dataset(exampleSize, numberOfExamples, matrix.data);
         resolve(dataset);
       });
     });

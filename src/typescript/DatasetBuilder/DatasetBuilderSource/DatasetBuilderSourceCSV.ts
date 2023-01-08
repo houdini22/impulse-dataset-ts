@@ -55,7 +55,11 @@ export class DatasetBuilderSourceCSV extends AbstractDatasetBuilderSource {
     const numberOfExamples = this.data.length;
     const exampleSize = this.data[0].length;
 
-    return new Matrix(numberOfExamples, exampleSize, this.data).transpose();
+    if (typeof numberOfExamples !== "undefined" && typeof exampleSize !== "undefined") {
+      return new Matrix(numberOfExamples, exampleSize, this.data);
+    }
+
+    return new Matrix(0, 0, [[]]);
   }
   /*
   protected parseLine(line: string, exampleIndexCol: number): void {
