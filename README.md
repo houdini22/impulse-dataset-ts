@@ -2,7 +2,7 @@
 
 ## Installation.
 
-```npm install```
+```npm install impulse-dataset-ts```
 
 ## Build.
 
@@ -37,8 +37,7 @@ const {
 const path = require("path");
 
 DatasetBuilder.fromSource(
-    DatasetBuilderSourceCSV.fromLocalFile(path.resolve(__dirname, "./data/data.csv")),
-    {transpose: true}
+    DatasetBuilderSourceCSV.fromLocalFile(path.resolve(__dirname, "./data/data.csv"))
 ).then(async (inputDataset) => {
     console.log(inputDataset.data);
     inputDataset = new CategoryDatasetModifier([0, 1]).apply(inputDataset);
