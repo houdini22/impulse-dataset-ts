@@ -9,6 +9,7 @@ import {
   MissingDataScalingDatasetModifier,
   ShuffleDatasetModifier,
   CategoryDatasetModifier,
+  SplitDatasetModifier,
 } from "./Dataset/DatasetModifier";
 
 const DatasetBuilder = {
@@ -24,6 +25,7 @@ const DatasetModifier = {
   MissingDataScalingDatasetModifier,
   ShuffleDatasetModifier,
   CategoryDatasetModifier,
+  SplitDatasetModifier,
 };
 const DatasetBuilderSource = {
   DatasetBuilderSourceCSV,
