@@ -1,7 +1,7 @@
 import { AbstractDatasetModifier } from "./AbstractDatasetModifier";
 import { Dataset } from "../Dataset";
 
-export class MissingDataScalingDatasetModifier extends AbstractDatasetModifier {
+export class MissingDataDatasetModifier extends AbstractDatasetModifier {
   protected modificationType = "mean";
 
   apply(dataset: Dataset): Dataset {
@@ -36,7 +36,7 @@ export class MissingDataScalingDatasetModifier extends AbstractDatasetModifier {
     return dataset;
   }
 
-  setModificationType(type: string): MissingDataScalingDatasetModifier {
+  setModificationType(type: string): MissingDataDatasetModifier {
     this.modificationType = type;
     return this;
   }

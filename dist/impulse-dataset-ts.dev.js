@@ -370,7 +370,7 @@ var MinMaxScalingDatasetModifier = /*#__PURE__*/function (_AbstractDatasetModif)
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "MissingDataScalingDatasetModifier": () => (/* binding */ MissingDataScalingDatasetModifier)
+/* harmony export */   "MissingDataDatasetModifier": () => (/* binding */ MissingDataDatasetModifier)
 /* harmony export */ });
 /* harmony import */ var _AbstractDatasetModifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AbstractDatasetModifier */ "./src/typescript/Dataset/DatasetModifier/AbstractDatasetModifier.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -388,12 +388,12 @@ function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key i
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
-var MissingDataScalingDatasetModifier = /*#__PURE__*/function (_AbstractDatasetModif) {
-  _inherits(MissingDataScalingDatasetModifier, _AbstractDatasetModif);
-  var _super = _createSuper(MissingDataScalingDatasetModifier);
-  function MissingDataScalingDatasetModifier() {
+var MissingDataDatasetModifier = /*#__PURE__*/function (_AbstractDatasetModif) {
+  _inherits(MissingDataDatasetModifier, _AbstractDatasetModif);
+  var _super = _createSuper(MissingDataDatasetModifier);
+  function MissingDataDatasetModifier() {
     var _this;
-    _classCallCheck(this, MissingDataScalingDatasetModifier);
+    _classCallCheck(this, MissingDataDatasetModifier);
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
@@ -401,7 +401,7 @@ var MissingDataScalingDatasetModifier = /*#__PURE__*/function (_AbstractDatasetM
     _defineProperty(_assertThisInitialized(_this), "modificationType", "mean");
     return _this;
   }
-  _createClass(MissingDataScalingDatasetModifier, [{
+  _createClass(MissingDataDatasetModifier, [{
     key: "apply",
     value: function apply(dataset) {
       var rowsToFill = [];
@@ -439,7 +439,7 @@ var MissingDataScalingDatasetModifier = /*#__PURE__*/function (_AbstractDatasetM
       return this;
     }
   }]);
-  return MissingDataScalingDatasetModifier;
+  return MissingDataDatasetModifier;
 }(_AbstractDatasetModifier__WEBPACK_IMPORTED_MODULE_0__.AbstractDatasetModifier);
 
 /***/ }),
@@ -595,7 +595,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CallbackDatasetModifier": () => (/* reexport safe */ _Callback__WEBPACK_IMPORTED_MODULE_0__.CallbackDatasetModifier),
 /* harmony export */   "CategoryDatasetModifier": () => (/* reexport safe */ _Category__WEBPACK_IMPORTED_MODULE_4__.CategoryDatasetModifier),
 /* harmony export */   "MinMaxScalingDatasetModifier": () => (/* reexport safe */ _MinMaxScaling__WEBPACK_IMPORTED_MODULE_1__.MinMaxScalingDatasetModifier),
-/* harmony export */   "MissingDataScalingDatasetModifier": () => (/* reexport safe */ _MissingData__WEBPACK_IMPORTED_MODULE_2__.MissingDataScalingDatasetModifier),
+/* harmony export */   "MissingDataDatasetModifier": () => (/* reexport safe */ _MissingData__WEBPACK_IMPORTED_MODULE_2__.MissingDataDatasetModifier),
 /* harmony export */   "ShuffleDatasetModifier": () => (/* reexport safe */ _Shuffle__WEBPACK_IMPORTED_MODULE_3__.ShuffleDatasetModifier),
 /* harmony export */   "SplitDatasetModifier": () => (/* reexport safe */ _Split__WEBPACK_IMPORTED_MODULE_5__.SplitDatasetModifier)
 /* harmony export */ });
@@ -1306,7 +1306,7 @@ var Dataset = {
 var DatasetModifier = {
   CallbackDatasetModifier: _Dataset_DatasetModifier__WEBPACK_IMPORTED_MODULE_4__.CallbackDatasetModifier,
   MinMaxScalingDatasetModifier: _Dataset_DatasetModifier__WEBPACK_IMPORTED_MODULE_4__.MinMaxScalingDatasetModifier,
-  MissingDataScalingDatasetModifier: _Dataset_DatasetModifier__WEBPACK_IMPORTED_MODULE_4__.MissingDataScalingDatasetModifier,
+  MissingDataDatasetModifier: _Dataset_DatasetModifier__WEBPACK_IMPORTED_MODULE_4__.MissingDataDatasetModifier,
   ShuffleDatasetModifier: _Dataset_DatasetModifier__WEBPACK_IMPORTED_MODULE_4__.ShuffleDatasetModifier,
   CategoryDatasetModifier: _Dataset_DatasetModifier__WEBPACK_IMPORTED_MODULE_4__.CategoryDatasetModifier,
   SplitDatasetModifier: _Dataset_DatasetModifier__WEBPACK_IMPORTED_MODULE_4__.SplitDatasetModifier

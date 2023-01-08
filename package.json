@@ -1,6 +1,6 @@
 {
   "name": "impulse-dataset-ts",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Neural Network Dataset Library.",
   "devDependencies": {
     "@babel/cli": "^7.20.7",

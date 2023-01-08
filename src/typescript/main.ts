@@ -6,7 +6,7 @@ import { DatasetVocabularyBuilderSourceTextFile } from "./DatasetBuilder/Dataset
 import {
   CallbackDatasetModifier,
   MinMaxScalingDatasetModifier,
-  MissingDataScalingDatasetModifier,
+  MissingDataDatasetModifier,
   ShuffleDatasetModifier,
   CategoryDatasetModifier,
   SplitDatasetModifier,
@@ -22,7 +22,7 @@ const Dataset = {
 const DatasetModifier = {
   CallbackDatasetModifier,
   MinMaxScalingDatasetModifier,
-  MissingDataScalingDatasetModifier,
+  MissingDataDatasetModifier,
   ShuffleDatasetModifier,
   CategoryDatasetModifier,
   SplitDatasetModifier,
