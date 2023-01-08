@@ -1,4 +1,4 @@
-import { Matrix } from "../Math/Matrix";
+import { Matrix } from "impulse-math-ts";
 
 export class Dataset {
   public exampleSize = 0;

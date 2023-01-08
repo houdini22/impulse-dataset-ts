@@ -1,8 +1,6 @@
-import * as fs from "fs";
 import { AbstractDatasetBuilderSource } from "./AbstractDatasetBuilderSource";
-import { Matrix } from "../../Math/Matrix";
+import { Matrix } from "impulse-math-ts";
 import * as csvtojson from "csvtojson";
-import { Dataset } from "../../Dataset";
 
 enum CSVState {
   UnquotedField,

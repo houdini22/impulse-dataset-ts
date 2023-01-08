@@ -1,6 +1,6 @@
 import { AbstractDatasetModifier } from "./AbstractDatasetModifier";
 import { Dataset } from "../Dataset";
-import { Matrix } from "../../Math/Matrix";
+import { Matrix } from "impulse-math-ts";
 
 export class ShuffleDatasetModifier extends AbstractDatasetModifier {
   public sortList: number[] = [];

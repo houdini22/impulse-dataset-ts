@@ -1,6 +1,5 @@
 import { AbstractDatasetModifier } from "./AbstractDatasetModifier";
 import { Dataset } from "../Dataset";
-import value from "*.json";
 
 export class CategoryDatasetModifier extends AbstractDatasetModifier {
   protected columns: Array<number>;

@@ -1,5 +1,5 @@
 import { AbstractDatasetModifier } from "./AbstractDatasetModifier";
-import { Matrix } from "../../Math/Matrix";
+import { Matrix } from "impulse-math-ts";
 import { Dataset } from "../Dataset";
 
 export class CallbackDatasetModifier extends AbstractDatasetModifier {

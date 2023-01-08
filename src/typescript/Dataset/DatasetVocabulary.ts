@@ -1,4 +1,4 @@
-import { Matrix } from "../Math/Matrix";
+import { Matrix } from "impulse-math-ts";
 
 export class DatasetVocabulary {
   public vocabularySize = 0;

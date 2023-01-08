@@ -1,6 +1,6 @@
 {
   "name": "impulse-dataset-ts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Neural Network Dataset Library.",
   "devDependencies": {
     "@babel/cli": "^7.20.7",
@@ -29,7 +29,8 @@
   },
   "license": "Copyright Michał Baniowski",
   "dependencies": {
-    "csvtojson": "^2.0.10"
+    "csvtojson": "^2.0.10",
+    "impulse-math-ts": "^0.0.1"
   },
   "main": "./dist/impulse-dataset-ts.js"
 }
