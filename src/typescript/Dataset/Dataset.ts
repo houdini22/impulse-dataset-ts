@@ -5,32 +5,12 @@ export class Dataset {
   public numberOfExamples = 0;
   public data: Matrix | null = null;
 
-  constructor(exampleSize: number = null, numberOfExamples: number = null, arr: string[][] | number[][] = null) {
+  constructor(exampleSize: number = null, numberOfExamples: number = null, arr: number[] = null) {
     this.exampleSize = exampleSize;
     this.numberOfExamples = numberOfExamples;
 
     if (arr) {
-      const data = [];
-      for (let row = 0; row < exampleSize; row += 1) {
-        data[row] = new Array(numberOfExamples);
-        for (let col = 0; col < numberOfExamples; col += 1) {
-          if (!arr[col]) {
-            continue;
-          }
-          // @ts-ignore
-          if (typeof arr[col][row] === "string" && /^[-0-9.e]+$/.test(arr[col][row])) {
-            data[row][col] = Number(arr[col][row]);
-          } else if (typeof arr[col][row] === "string") {
-            // @ts-ignore
-            data[row][col] = arr[col][row].length ? arr[col][row] : NaN;
-          } else if (typeof arr[col][row] === "number") {
-            data[row][col] = arr[col][row];
-          } else {
-            data[row][col] = NaN;
-          }
-        }
-      }
-      this.data = new Matrix(this.exampleSize, this.numberOfExamples, data);
+      this.data = new Matrix(this.numberOfExamples, this.exampleSize, arr);
     }
   }
 
@@ -44,7 +24,7 @@ export class Dataset {
   }
 
   exampleAt(index: number): Matrix | null {
-    return this.data.col(index);
+    return this.data.row(index).transpose();
   }
 
   getNumberOfExamples(): number {
